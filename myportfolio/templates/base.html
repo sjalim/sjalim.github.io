@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Django App
+      {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    {% block styles %}
+      <style>
+        .animated-icon1 {
+          width: 30px;
+          height: 20px;
+          position: relative;
+          margin: 0px;
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+          -webkit-transition: 0.5s ease-in-out;
+          -moz-transition: 0.5s ease-in-out;
+          -o-transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out;
+          cursor: pointer;
+        }
+        
+        .animated-icon1 span {
+          display: block;
+          position: absolute;
+          height: 3px;
+          width: 100%;
+          border-radius: 0px;
+          opacity: 1;
+          left: 0;
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+          -webkit-transition: 0.25s ease-in-out;
+          -moz-transition: 0.25s ease-in-out;
+          -o-transition: 0.25s ease-in-out;
+          transition: 0.25s ease-in-out;
+          background: #ffffff;
+        }
+        
+        .animated-icon1 span:nth-child(1) {
+          top: 0px;
+        }
+        
+        .animated-icon1 span:nth-child(2) {
+          top: 10px;
+        }
+        
+        .animated-icon1 span:nth-child(3) {
+          top: 20px;
+        }
+        
+        /* Animation for the first span (top line) */
+        .animated-icon1.open span:nth-child(1) {
+          top: 10px;
+          -webkit-transform: rotate(135deg);
+          -moz-transform: rotate(135deg);
+          -o-transform: rotate(135deg);
+          transform: rotate(135deg);
+        }
+        
+        /* Animation for the second span (middle line) */
+        .animated-icon1.open span:nth-child(2) {
+          opacity: 0;
+          left: -60px;
+        }
+        
+        /* Animation for the third span (bottom line) */
+        .animated-icon1.open span:nth-child(3) {
+          top: 10px;
+          -webkit-transform: rotate(-135deg);
+          -moz-transform: rotate(-135deg);
+          -o-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+        }
+        
+        .grey-button {
+          background-color: #808080;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 4px;
+        }
+        
+        .navbar-toggler:focus,
+        .navbar-toggler:active,
+        .navbar-toggler-icon:focus {
+          outline: none !important;
+          box-shadow: none !important;
+          border: none !important;
+        }
+        
+        /* This removes the border that Bootstrap 5 adds */
+        .navbar-toggler {
+          border: none !important;
+        }
+        
+        /* If you're using Bootstrap 4 */
+        .navbar-toggler:focus {
+          outline: none;
+          box-shadow: none;
+        }
+        
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+        }
+        
+        .container {
+          display: flex;
+          margin: 0;
+        }
+        
+        .sidebar {
+          width: 250px;
+          background-color: #ffffff;
+          height: 100%;
+          position: sticky;
+          left: 0;
+          top: 0;
+          padding: 0;
+          border-right: 1px solid #ffffff;
+          overflow-y: auto;
+          z-index: 1000;
+        }
+        
+        .sidebar h2 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+        
+        .sidebar-nav {
+          list-style: none;
+        }
+        
+        .sidebar-nav li {
+          margin-bottom: 10px;
+        }
+        
+        .sidebar-nav a {
+          display: block;
+          padding: 10px;
+          color: #495057;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: background-color 0.2s;
+        }
+        
+        .sidebar-nav a:hover {
+          background-color: #e9ecef;
+        }
+        
+        .sidebar-nav a.active {
+          background-color: #007bff;
+          color: white;
+        }
+        
+        .main-content {
+          flex: 1;
+          padding: 20px;
+        }
+        
+        /* Add content sections to demonstrate scrolling */
+        .content-section {
+          margin-bottom: 40px;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .double-bordered-circle {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          border: 5px solid #ffffff; /* Inner border */
+          box-shadow: 1px 0 0 0 #fff, 0 0 2px 0 #080808; /* White space + outer border */
+          overflow: hidden;
+        }
+        
+        .main-section {
+          display: flex;
+          justify-content: center;
+          text-align: left;
+        }
+      </style>
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid d-flex justify-content-between">
+            <a class="navbar-brand text-secondary" href="{% url 'home' %}"><b>S S Saruar Jahan</b></a>
+            
+            <button class="navbar-toggler third-button grey-button" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <div class="animated-icon1">
+                <span></span><span></span><span></span>
+              </div>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+              <div class="navbar-nav">
+                <a class="nav-link active text-secondary mx-4" aria-current="page" href="{% url 'home' %}">Home</a>
+                <a class="nav-link text-secondary mx-4" href="{% url 'skill' %}">Skills</a>
+                <a class="nav-link text-secondary mx-4" href="{% url 'project' %}">Projects</a>
+                <a class="nav-link text-secondary mx-4" href="{% url 'contact' %}">Contact</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    <hr class="dashed" style="margin: 0;" />
+    <div class="container-fluid main-section" style="margin: 20px;">
+      <div class="sidebar">
+        <div class="container d-flex justify-content-center align-items-center">
+          <img class="double-bordered-circle" src="{% static 'Assests/saruar.jpg' %}" alt="Profile Picture" class="profile-img" />
+        </div>
+        <h5 class="text-secondary" style="text-align: center;"><b>S S Saruar Jahan</b></h5>
+      </div>
+      <div class="container">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let isAnimating = false
+      
+        $('.navbar-toggler').click(function () {
+          // Check if animation is in progress
+          if (isAnimating) {
+            return false // Prevent click if still in cooldown
+          }
+      
+          // Set cooldown flag
+          isAnimating = true
+      
+          // Toggle animation class
+          $('.animated-icon1').toggleClass('open')
+      
+          // Reset cooldown after 1 second
+          setTimeout(function () {
+            isAnimating = false
+          }, 500)
+        })
+      })
+    </script>
+  </body>
+</html>
