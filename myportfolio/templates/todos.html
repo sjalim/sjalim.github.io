@@ -1,11 +1,47 @@
 {% extends "base.html" %} {% block content %} 
-<h1>Todo List</h1>
-<ul>
+{% block extra_css %}
+<style>
+
+
+    .section-header {
+        padding: 20px;
+        background-color: #2c3e50;
+        color: white;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+
+</style>
+
+{% endblock extra_css %}
+
+
+{% comment %} <ul>
     {%for todo in todos%}
         <li>
             {{todo.title}}: {% if todo.completed %} Completed 
                 {% else %} Not completed {% endif %}
         </li>
     {% endfor %}
-</ul>
+</ul> {% endcomment %}
+<div class="container">
+    
+    <div>
+        <h1>Todo List</h1>
+        {% for section in sections %}
+        <div id="{{ section.id }}" class="section">
+            <div class="section-header">{{ section.headline }}</div>
+            <div class="section-content">
+                <p>{{ section.content }}</p>
+                <p>{{ section.content }}</p>
+                <!-- Duplicate content to ensure scrolling -->
+                <p>{{ section.content }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}

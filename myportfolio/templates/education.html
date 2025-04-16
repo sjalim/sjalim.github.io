@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %} Education{% endblock  %}
+{% block content %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/education.css' %}">
+{% endblock %}
+
+<div>
+
+    <div class="main-content">
+
+        <h3><b>Education</b></h3>
+        {% for item in educationItems %}
+        <div>
+           
+            {%if item.schoolWebsiteLink == ""%}
+            <h5><b class="styled-link">{{item.schoolNameText}}</b></h5><br>
+            {%else%}
+            <h5><a class="styled-link" href="{{item.schoolWebsiteLink}}"><b>{{item.schoolNameText}}</b> </a></h5><br>
+            {%endif%}
+                <h6> {{item.degreeNameText}} </h6>  
+            {%if item.certificateLink != null%}
+            <span>
+                [ <a class="styled-link" href="{{item.certificateLink}}">Certificate</a> ]
+            </span>
+            <br>
+            {%endif%}
+
+            {% if item.departmentNameText != null%}
+            <h6>{{item.departmentNameText}}</h6><br>
+            {%endif%}
+            <h6>Duration: {{item.durationText}}</h6><br>
+            <h6>Grade: <b>{{item.gradeText}}</b> scale </h6>
+            {%if item.transcriptLink != ""%}
+                <span>[<a class="styled-link" href="">Certificate</a>]</span><br>
+            {%endif%}
+
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

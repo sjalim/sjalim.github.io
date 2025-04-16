@@ -1,0 +1,4 @@
+.main-content > div > h5, h6 {
+    font-family: 'Times New Roman', Times, serif;
+    display: inline;
+}

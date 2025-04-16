@@ -17,4 +17,14 @@ class HomeSidebarInfo(models.Model):
     orcidLink = models.CharField(max_length=300)
     researchGateLink = models.CharField(max_length=300)
 
+class EducationItem(models.Model):
+    schoolNameText = models.CharField(max_length=300)
+    schoolWebsiteLink = models.CharField(max_length=300, blank = True, null=True)
+    degreeNameText = models.CharField(max_length=300)
+    departmentNameText = models.CharField(max_length=300, blank = True, null=True)
+    certificateLink = models.CharField(max_length=300, blank = True, null=True)
+    durationText = models.CharField(max_length=300)
+    gradeText = models.CharField(max_length=300, blank = True, null=True)
+    transcriptLink = models.CharField(max_length=300, blank = True, null=True)
+
 
