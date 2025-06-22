@@ -1,1 +1,1 @@
-web: gunicorn styled-linksgi --log-file -
+web: gunicorn portfolio.wsgi --log-file -
