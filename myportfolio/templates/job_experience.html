@@ -1,5 +1,23 @@
 {% extends "base.html" %} {% block title %} Job Experience{% endblock  %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/job_experience.css' %}">
+{% endblock %}
 {% block content %}
-<p>this is the job experience</p>
 
-{% endblock content %}
+    <div class="main-content">
+        <h4>Pervious Positions</h4>
+        <div >
+            {% for position in positions %}
+            <div class="">
+                <h2><a href="/">{{ position.company }}</a></h2>
+                <p class="department">{{ position.department }} </p>
+                <p>{{ position.description|truncatewords:30 }}</p>
+                <p>{{position.duration}}</p>
+            </div>
+            {% empty %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

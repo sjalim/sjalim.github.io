@@ -1,4 +1,7 @@
 from django.db import models
+from django import forms
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import URLValidator
 
 # Create your models here.
 
@@ -27,4 +30,18 @@ class EducationItem(models.Model):
     gradeText = models.CharField(max_length=300, blank = True, null=True)
     transcriptLink = models.CharField(max_length=300, blank = True, null=True)
 
-
+class JobExperienceItem(models.Model):
+    title = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    company_link = models.URLField(
+        max_length=200,
+        validators=[URLValidator()],
+        blank=True,
+        null=True
+    )
+    department = models.CharField(max_length=50, blank=True, null=True)
+    location = models.CharField(max_length=100, blank=True, null=True)
+    start_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
+    currently_working = models.BooleanField(default=False)
+    description = models.TextField()

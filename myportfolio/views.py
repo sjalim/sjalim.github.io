@@ -153,7 +153,33 @@ def achievement(request):
     return render(request, "achievement.html")
 
 def job_experience(request):
-    return render(request, "job_experience.html")
+
+    positions = [   
+        {
+            'title': 'Software Engineer',
+            'company': 'Tech Company',
+            'company_link': 'https://www.techcompany.com',
+            'department': 'Engineering',
+            'duration': 'Jan 2020 - Present',
+            'description': 'Developed and maintained web applications using Django and React.'
+        },
+        {
+            'title': 'Data Analyst',
+            'company': 'Data Company',
+            'location': 'City, Country',
+            'duration': 'Jan 2019 - Dec 2019',
+            'description': 'Analyzed data using Python and SQL to provide insights for business decisions.'
+        },
+        {
+            'title': 'Intern',
+            'company': 'Internship Company',
+            'location': 'City, Country',
+            'duration': 'Jun 2018 - Aug 2018',
+            'description': 'Assisted in software development projects and learned about Agile methodologies.'
+        }
+
+    ]
+    return render(request, "job_experience.html", {'positions': positions})
 
 def project(request):
     return render(request, "project.html")
