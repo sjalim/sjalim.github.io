@@ -1,5 +1,4 @@
 cat <<EOT >> .gitignore
-*.sqlite3
 *.pyc
 __pycache__
 .env
