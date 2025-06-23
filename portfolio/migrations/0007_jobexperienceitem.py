@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('myportfolio', '0006_educationitem_schoolwebsitelink'),
+        ('portfolio', '0006_educationitem_schoolwebsitelink'),
     ]
 
     operations = [
