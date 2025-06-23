@@ -9,8 +9,8 @@ urlpatterns = [
     path("job_experience/", views.job_experience, name="job_experience"),
     path("project/", views.project, name="project"),
     path("research/", views.research, name="research"),
-    path("publicaiton/", views.publication, name="publication"),
-   path("resume/", views.resume, name="resume"),
+    path("publication/", views.publication, name="publication"),
+    path("resume/", views.resume, name="resume"),
     path("contact/", views.contact, name="contact"),
     path("todos/", views.todos, name="Todos"),
 
