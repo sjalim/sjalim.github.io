@@ -9,5 +9,5 @@ admin.site.register(HomeSidebarInfo)
 
 admin.site.register(EducationItem)
 
-admin.register(JobExperienceItem)
+admin.site.register(JobExperienceItem)
 
