@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import TodoItem, EducationItem
+from .models import TodoItem, EducationItem, AchievementItem
 # Create your views here.
 
 def home(request):
@@ -7,8 +7,9 @@ def home(request):
 
 def education(request):
     educationItems = EducationItem.objects.all()
+    achievementItems = AchievementItem.objects.all()
 
-    return render(request, "education.html", {"educationItems": educationItems})
+    return render(request, "education.html", {"educationItems": educationItems, "achievementItems": achievementItems})
 
 def skill(request):
     skills_data = [
