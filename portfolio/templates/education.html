@@ -1,10 +1,11 @@
 {% extends "base.html" %} {% block title %} Education{% endblock  %}
-{% block content %}
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/education.css' %}">
+<link rel="stylesheet" href="{% static 'css/education.css' %}">
 {% endblock %}
+
+{% block content %}
 
 <div>
 
@@ -32,13 +33,27 @@
             {%endif%}
             <h6>Duration: {{item.durationText}}</h6><br>
             <h6>Grade: <b>{{item.gradeText}}</b> scale </h6>
-            {%if item.transcriptLink != ""%}
-                <span>[<a class="styled-link" href="">Certificate</a>]</span><br>
+            {%if item.transcriptLink != null%}
+                <span>[<a class="styled-link" href="{{item.transcriptLink}}">Certificate</a>]</span><br>
             {%endif%}
 
         </div>
         <br>
         {% endfor %}
+    </div>
+    <div class="main-content">
+        <h3>Certification</h3>
+        {%for item in achievementItems%}
+        
+           <div class="achievement-row">
+                   <i><img class="achievement-icon" src="{% static 'Assests/achievement_icon.jpg' %}" alt="icon"></i> 
+                <p class="achievement-title"> <a class="styled-link"  href="{{item.acheivementLink}}"> 
+              {{item.title}}  </a> </p>
+          </div>
+
+        {%endfor%}
+
+
     </div>
 </div>
 

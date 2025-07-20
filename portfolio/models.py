@@ -45,3 +45,12 @@ class JobExperienceItem(models.Model):
     end_date = models.DateField(blank=True, null=True)
     currently_working = models.BooleanField(default=False)
     description = models.TextField()
+
+class AchievementItem(models.Model):
+    title = models.CharField(max_length=100)
+    acheivementLink = models.URLField(
+        max_length=200,
+        validators=[URLValidator()],
+        blank=True,
+        null=True
+    )

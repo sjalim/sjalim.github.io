@@ -1,0 +1,18 @@
+.job_experience_position {
+    font-size: 1.2em;
+    font-weight: bold;
+      margin-top: 0;
+        margin-bottom: 0; 
+}
+
+.job_experience_company > h3{
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0; 
+}
+.job_experience_company > p{
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;}
