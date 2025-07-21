@@ -277,7 +277,7 @@
     border-radius: 5px;
     height: auto;
     overflow-y: auto;
-    flex-direction: row;
+    flex-direction: column;
   }
 
 
