@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import TodoItem, EducationItem, AchievementItem, Section, Categories, Skills
+from .models import TodoItem, EducationItem, AchievementItem, Section, Categories, Skills, JobExperienceItem
 # Create your views here.
 import logging
 
@@ -44,147 +44,6 @@ def skill(request):
 
         skills_data.append(section_dict)
 
-    print("skills_data",skills_data)
-
-    
-    # skills_data = [
-    #             {
-    #                 "section": "Data Science",
-    #                 "categories": [
-    #                     {
-    #                         "name": "Programming",
-    #                         "skills": [
-    #                             {"name": "Python", "icon": "python.png"},
-    #                             {"name": "R", "icon": "r.png"}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Framework",
-    #                         "skills": [
-    #                             {"name": "PyTorch", "icon": "pytorch.png"},
-    #                             {"name": "TensorFlow", "icon": "tensorflow.png"},
-    #                             {"name": "SciKit-Learn", "icon": "scikit-learn.png"},
-    #                             {"name": "Numpy", "icon": "numpy.png"},
-    #                             {"name": "Pandas", "icon": "pandas.png"},
-    #                             {"name": "Matplotlib", "icon": "matplotlib.png"},
-    #                             {"name": "Seaborn", "icon": "seaborn.png"}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Tools",
-    #                         "skills": [
-    #                             {"name": "Google Colab", "icon": "google-colab.png"},
-    #                             {"name": "Jupyter Notebook", "icon": "jupyter.png"},
-    #                             {"name": "OpenCV", "icon": "opencv.png"},
-    #                             {"name": "SQLAlchemy", "icon": "sqlalchemy.png"},
-    #                             {"name": "Power BI", "icon": "powerbi.png"},
-    #                             {"name": "Tableau", "icon": "tableau.png"},
-    #                             {"name": "PyODBC", "icon": "pyodbc.png"},
-    #                             {"name": "psycopg2", "icon": "psycopg2.png"}
-    #                         ]
-    #                     }
-    #                 ]
-    #             },
-    #             {
-    #                 "section": "App Development",
-    #                 "categories": [
-    #                     {
-    #                         "name": "Programming",
-    #                         "skills": [
-    #                             {"name": "Swift", "icon": "swift.png"},
-    #                             {"name": "Dart", "icon": "dart.png"},
-    #                             {"name": "Java", "icon": "java.png"},
-    #                             {"name": "Objective C", "icon": "objc.png"}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Frameworks",
-    #                         "skills": [
-    #                             {"name": "SwiftUI", "icon": "swiftui.png"},
-    #                             {"name": "UIKit", "icon": "uikit.png"},
-    #                             {"name": "iOS Core Frameworks", "icon": "ios.png"},
-    #                             {"name": "Flutter", "icon": "flutter.png"},
-    #                             {"name": "Android Development", "icon": "android-development.png"}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Tools",
-    #                         "skills": [
-    #                             {"name": "Xcode", "icon": "xcode.png"},
-    #                             {"name": "SceneBuilder", "icon": "scenebuilder.png"},
-    #                             {"name": "Android Studio", "icon": "android-studio.png"},
-    #                             {"name": "Jira", "icon": "jira.png"},
-    #                             {"name": "Jenkins", "icon": "jenkins.png"}
-    #                         ]
-    #                     }
-    #                 ]
-    #             },
-    #             {
-    #                 "section": "Web Development",
-    #                 "categories": [
-    #                     {
-    #                         "name": "Programming / Markup Languages",
-    #                         "skills": [
-    #                             {"name": "JavaScript", "icon": "javascript.png"},
-    #                             {"name": "Python", "icon": "python.png", "active": True},
-    #                             {"name": "C#", "icon": "csharp.png", "active": True},
-    #                             {"name": "HTML", "icon": "html.png", "active": True},
-    #                             {"name": "CSS", "icon": "css.png", "active": True},
-    #                             {"name": "SCSS", "icon": "scss.png", "active": True}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Frameworks",
-    #                         "skills": [
-    #                             {"name": "ReactJS", "icon": "reactjs.png", "active": True},
-    #                             {"name": "TypeScript", "icon": "typescript.png", "active": True},
-    #                             {"name": "NextJS", "icon": "nextjs.png", "active": True},
-    #                             {"name": "Django", "icon": "django.png", "active": True},
-    #                             {"name": "ASP .NET", "icon": "aspnet.png", "active": True},
-    #                             {"name": "Bootstrap", "icon": "bootstrap.png", "active": True},
-    #                             {"name": "Beautiful Soup", "icon": "beautifulsoup.png", "active": True},
-    #                             {"name": "Selenium", "icon": "selenium.png", "active": True}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Tools",
-    #                         "skills": [
-    #                             {"name": "VSCode", "icon": "vscode.png", "active": True},
-    #                             {"name": "Intellij", "icon": "intellij.png", "active": True},
-    #                             {"name": "Figma", "icon": "figma.png", "active": True},
-    #                             {"name": "Docker", "icon": "docker.png", "active": True},
-    #                             {"name": "Material-UI", "icon": "materialui.png", "active": True}
-    #                         ]
-    #                     }
-    #                 ]
-    #             },
-    #             {
-    #                 "section": "Desktop Application Development",
-    #                 "categories": [
-    #                     {
-    #                         "name": "Programming",
-    #                         "skills": [
-    #                             {"name": "Java", "icon": "java.png", "active": True}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Frameworks",
-    #                         "skills": [
-    #                             {"name": "JavaFX", "icon": "javafx.png", "active": True},
-    #                             {"name": "Javaswing", "icon": "javaswing.png", "active": True}
-    #                         ]
-    #                     },
-    #                     {
-    #                         "name": "Tools",
-    #                         "skills": [
-    #                             {"name": "SceneBuilder", "icon": "scenebuilder.png"}
-    #                         ]
-    #                     }
-    #                 ]
-    #             }
-    #         ] 
-
-
     return render(request, "skill.html", {'skills_data': skills_data})
 
 def achievement(request):
@@ -192,31 +51,36 @@ def achievement(request):
 
 def job_experience(request):
 
-    positions = [   
-        {
-            'title': 'Software Engineer',
-            'company': 'Tech Company',
-            'company_link': 'https://www.techcompany.com',
-            'department': 'Engineering',
-            'duration': 'Jan 2020 - Present',
-            'description': 'Developed and maintained web applications using Django and React.'
-        },
-        {
-            'title': 'Data Analyst',
-            'company': 'Data Company',
-            'location': 'City, Country',
-            'duration': 'Jan 2019 - Dec 2019',
-            'description': 'Analyzed data using Python and SQL to provide insights for business decisions.'
-        },
-        {
-            'title': 'Intern',
-            'company': 'Internship Company',
-            'location': 'City, Country',
-            'duration': 'Jun 2018 - Aug 2018',
-            'description': 'Assisted in software development projects and learned about Agile methodologies.'
-        }
+    positions = JobExperienceItem.objects.all()
 
-    ]
+    print(positions)
+    
+
+    # positions = [   
+    #     {
+    #         'title': 'Software Engineer',
+    #         'company': 'Tech Company',
+    #         'company_link': 'https://www.techcompany.com',
+    #         'department': 'Engineering',
+    #         'duration': 'Jan 2020 - Present',
+    #         'description': 'Developed and maintained web applications using Django and React.'
+    #     },
+    #     {
+    #         'title': 'Data Analyst',
+    #         'company': 'Data Company',
+    #         'location': 'City, Country',
+    #         'duration': 'Jan 2019 - Dec 2019',
+    #         'description': 'Analyzed data using Python and SQL to provide insights for business decisions.'
+    #     },
+    #     {
+    #         'title': 'Intern',
+    #         'company': 'Internship Company',
+    #         'location': 'City, Country',
+    #         'duration': 'Jun 2018 - Aug 2018',
+    #         'description': 'Assisted in software development projects and learned about Agile methodologies.'
+    #     }
+
+    # ]
     return render(request, "job_experience.html", {'positions': positions})
 
 def project(request):
