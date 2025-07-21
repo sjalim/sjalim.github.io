@@ -293,7 +293,7 @@
   /* Media query for screen width 1000px or less */
   @media (max-width: 972px) {
     .profile-container {
-      flex-direction: row;
+      flex-direction: column;
     }
   
     .profile-sidebar {
