@@ -33,6 +33,7 @@ class EducationItem(models.Model):
 class JobExperienceItem(models.Model):
     title = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
+    company_logo = models.ImageField(upload_to='company_icons/')
     company_link = models.URLField(
         max_length=200,
         validators=[URLValidator()],
@@ -44,7 +45,14 @@ class JobExperienceItem(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
     currently_working = models.BooleanField(default=False)
+    isVoluntary = models.BooleanField(default=False)
     description = models.TextField()
+
+    def __str__(self):
+        return f"{self.title} at {self.company}"
+
+
+
 
 class AchievementItem(models.Model):
     title = models.CharField(max_length=100)
@@ -79,3 +87,4 @@ class Skills(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.category.name})"
+    
