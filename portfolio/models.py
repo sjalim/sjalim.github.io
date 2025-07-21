@@ -54,3 +54,28 @@ class AchievementItem(models.Model):
         blank=True,
         null=True
     )
+
+
+class Section(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class Categories(models.Model):
+    section = models.ForeignKey(Section, related_name='categories', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name} ({self.section.name})"
+
+
+class Skills(models.Model):
+    category = models.ForeignKey(Categories, related_name='skills', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    icon = models.ImageField(upload_to='skills_icons/')
+    active = models.BooleanField()
+
+    def __str__(self):
+        return f"{self.name} ({self.category.name})"
