@@ -1,116 +1,87 @@
 .project-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: none;
-        border-radius: 15px;
-        overflow: hidden;
-        height: 100%;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
+} 
+
+
+.card-content {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    padding: 15px;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+.project-section {
+    
+       background-color: #f1efec;
+       color: #030303;
+       font-weight: bold;
+       position: sticky;
+       top: 0;
+       z-index: 10;
+     
 }
 
-.project-image {
-    height: 250px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+
+
+.card-image {
+    width: 300px;
+    height: 200px;
+   
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
 }
 
-.project-card:hover .project-image {
-    transform: scale(1.05);
+.card-text {
+    flex: 1;
+}
+
+.card-title {
+ 
+    font-size: 1.5em;
+    color: #333;
+}
+
+.card-description {
+    color: #666;
+    line-height: 1.6;
 }
 
 .tech-badge {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 20px;
-    margin-right: 0.25rem;
-    margin-bottom: 0.25rem;
-}
-
-.project-status {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 2;
-}
-
-.btn-project {
+    display: inline-block;
+    padding: 2px;
     border-radius: 25px;
-    padding: 0.5rem 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-}
-
-.project-stats {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-weight: 200;
+    font-size: 0.75rem;
     color: white;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-top: 1rem;
+    background-color: #748DAE;
+}
+/* styles.css */
+.project-link-btn {
+    text-align: right;
+}
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #24292e; /* GitHub dark color */
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
-.stat-item {
-    text-align: center;
+.github-button:hover {
+  background-color: #333;
 }
 
-.stat-number {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: block;
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
-.project-timeline {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.project-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.5rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, #667eea, #764ba2);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -1.8rem;
-    top: 0.3rem;
-    width: 8px;
-    height: 8px;
-    background: #667eea;
-    border-radius: 50%;
-}
-
-.github-stats {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.github-stat {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.9rem;
-    color: #666;
+.github-logo {
+  width: 20px;
+  height: 20px;
+  fill: #fff; /* GitHub logo in white */
 }

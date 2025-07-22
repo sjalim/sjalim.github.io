@@ -30,27 +30,29 @@
       }
     </style>
   {% endblock %}
+<div class="container">
 
   <div class="container-fluid mt-4">
     {% for section in skills_data %}
     <div class="section">
-        <div class="skill-section-header">{{ section.section }}</div>
-   
-        {% for category in section.categories %}
-        <h6 class="skill-category"># {{ category.name }}</h6>
-        <div class="row">
-            {% for skill in category.skills %}
-            <div class="col-12 col-md-6 col-xl-4 mb-4">
-                <div class="skill-container d-flex">
-                    <img class="skill-icons" src="{% static 'icons/'|add:skill.icon %}" alt="{{ skill.name }}" />
-                    <text class="skill-text">{{ skill.name }}</text>
-                </div>
-            </div>
-            {% endfor %}
+      <div class="skill-section-header">{{ section.section }}</div>
+      
+      {% for category in section.categories %}
+      <h6 class="skill-category"># {{ category.name }}</h6>
+      <div class="row">
+        {% for skill in category.skills %}
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="skill-container d-flex">
+            <img class="skill-icons" src="{% static 'icons/'|add:skill.icon %}" alt="{{ skill.name }}" />
+            <text class="skill-text">{{ skill.name }}</text>
+          </div>
         </div>
         {% endfor %}
+      </div>
+      {% endfor %}
     </div>
     {% endfor %}
+  </div>
 </div>
 
 {% endblock %}
