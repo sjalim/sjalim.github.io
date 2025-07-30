@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse
-from .models import TodoItem, EducationItem, AchievementItem, Section, Categories, Skills, JobExperienceItem
+from .models import ProjectSection, TodoItem, EducationItem, AchievementItem, Section, Categories, Skills, JobExperienceItem, Project
 # Create your views here.
 import logging
-
+import json
 logger = logging.getLogger(__name__)
 
 def home(request):
@@ -53,7 +53,7 @@ def job_experience(request):
 
     positions = JobExperienceItem.objects.all()
 
-    print(positions)
+    # print(positions)
     
 
     # positions = [   
@@ -84,7 +84,82 @@ def job_experience(request):
     return render(request, "job_experience.html", {'positions': positions})
 
 def project(request):
-    return render(request, "project.html")
+
+    grouped_projects = []
+
+    sections = ProjectSection.objects.filter(active=True)
+
+    for section in sections:
+        projects = Project.objects.filter(section=section)
+        if projects.exists():
+            grouped_projects.append({
+                'section': section,
+                'projects': projects
+            })
+
+    return render(request, "project.html", {'projectItems': grouped_projects})
+  
+ 
+  
+    # projectItems = [
+    #     {
+    #         "section": "Data Science",
+    #         "projects": [
+    #             {
+    #                 "name": "check",
+    #                 "image": "saruar.jpg",
+    #                 "description": "check check check check check check check check",
+    #                 "tags": [
+    #                     "Swift", "SwiftUI", "iOS Deveploment"
+    #                 ],
+    #                 "link": "https://placehold.co/600x400"
+    #             },
+               
+    #         ]
+    #     },
+    #     {
+    #         "section": "App Development",
+    #         "projects": [
+    #             {
+    #                 "name": "check",
+    #                 "image": "saruar.jpg",
+    #                 "description": "check check",
+    #                 "tags": [
+    #                     "Swift", "SwiftUI", "iOS Deveploment"
+    #                 ],
+    #                 "link": "https://github.com/sjalim/CricInfo"
+    #             },
+    #             {
+    #                 "name": "check",
+    #                 "image": "saruar.jpg",                    
+    #                 "description": "check check",
+    #                 "tags": [
+    #                     "Swift", "SwiftUI", "iOS Deveploment"
+    #                 ],
+    #                 "link": "https://github.com/sjalim/CricInfo"
+    #             },
+    #              {
+    #                 "name": "check",
+    #                 "image": "saruar.jpg",
+    #                 "description":  "check check",
+    #                 "tags": [
+    #                     "Swift", "SwiftUI", "iOS Deveploment"
+    #                 ],
+    #                 "link": "https://github.com/sjalim/CricInfo"
+    #             },              
+    #                   {
+    #                 "name": "check",
+    #                 "image": "saruar.jpg",
+    #                 "description": "check check",
+    #                 "tags": [
+    #                     "Swift", "SwiftUI", "iOS Deveploment"
+    #                 ],
+    #                 "link": "https://github.com/sjalim/CricInfo"
+    #             },  
+    #         ]
+    #     }
+    # ]
+
 
 def research(request):
     return render(request, "research.html")
