@@ -32,8 +32,8 @@
 .card-image {
     width: 300px;
     height: 200px;
-  object-fit: contain;   /* Scale image to fit, preserving aspect ratio */
-    object-position: center center;    flex-basis: 0;
+
+    flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
 }

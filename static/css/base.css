@@ -76,6 +76,15 @@
     padding: 10px 20px;
     border-radius: 4px;
   }
+
+  .active{
+    font-weight: bold;
+    color: black !important;
+  }
+  .inactive{
+        font-weight: 300;
+
+  }
   
   .navbar-toggler:focus,
   .navbar-toggler:active,
@@ -115,8 +124,7 @@
   .main-content {
     flex: 1;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
+    display: block;
   }
   
   /* Add content sections to demonstrate scrolling */
@@ -152,7 +160,7 @@
   
   /* Profile Sidebar Styles */
   .profile-sidebar {
-    width: 300px;
+    width: 300px ;
     padding: 20px;
     position: sticky;
     border-radius: 5px;
@@ -277,7 +285,6 @@
     border-radius: 5px;
     height: auto;
     overflow-y: auto;
-    flex-direction: column;
   }
 
 

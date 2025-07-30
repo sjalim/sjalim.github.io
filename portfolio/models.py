@@ -88,3 +88,26 @@ class Skills(models.Model):
     def __str__(self):
         return f"{self.name} ({self.category.name})"
     
+
+
+
+class ProjectSection(models.Model):
+    name = models.CharField(max_length=100)
+    active = models.BooleanField(default=True)
+
+
+    def __str__(self):
+        return self.name
+
+
+class Project(models.Model):
+    section = section = models.ForeignKey(ProjectSection, on_delete=models.CASCADE, default=1)  # ✅ if ID=1 exists
+
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='static/project_images/')
+    description = models.TextField()
+    link = models.URLField()
+    tags = models.JSONField(default=list)  # or use a ManyToManyField to a Tag model
+
+    def __str__(self):
+        return self.name

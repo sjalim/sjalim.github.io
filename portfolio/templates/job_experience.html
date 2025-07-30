@@ -1,90 +1,88 @@
-{% extends "base.html" %} {% block title %} Job Experience{% endblock  %}
+{% extends 'base.html' %} {% block title %}
+  Job Experience
+{% endblock %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/job_experience.css' %}">
+  <link rel="stylesheet" href="{% static 'css/job_experience.css' %}" />
 {% endblock %}
 {% block content %}
-
-    {% comment %} <div class="main-content">
-        <div >
-            {% for position in positions %}
-            <div class="">
-                <h2><a href="/">{{ position.company }}</a></h2>
-                <p class="department">{{ position.department }} </p>
-                <p>{{ position.description|truncatewords:30 }}</p>
-                <p>{{position.duration}}</p>
-            </div>
-            {% empty %}
-            {% endfor %}
+  {% comment %} <div class="main-content">
+    <div>
+      {% for position in positions %}
+        <div class="">
+          <h2><a href="/">{{ position.company }}</a></h2>
+          <p class="department">{{ position.department }}</p>
+          <p>{{ position.description|truncatewords:30 }}</p>
+          <p>{{ position.duration }}</p>
         </div>
-    </div> {% endcomment %}
+      {% empty %}
 
-    <div class="main-content ">
-        <h3>Professional Experience</h3>
-   {% for position in positions %}
-   {%if position.isVoluntary is False%}
+      {% endfor %}
+    </div>
+  </div> {% endcomment %}
+
+    <div class="main-content">
+      <h3>Professional Experience</h3>
+      {% for position in positions %}
+        {% if position.isVoluntary is False %}
+          <div class="container p-0">
             <div class="position-card">
-                <div class="position-card-header">
-                    <img class="company-logo" src="{% static 'icons/'|add:position.company_logo.url %}" alt="Logo for {{ position.company }} displayed next to the job title in a professional setting" class="company-logo" />
-                    <div class="company-info">
-                   <a class="styled-link" href="{{position.company_link}}"> <h2 class="company-name">{{ position.company }}</h2></a>
-                    <h3 class="position-title">{{ position.title }}</h3>
-                    </div>
+              <div class="position-card-header">
+                <img class="company-logo" src="{% static 'icons/'|add:position.company_logo.url %}" alt="Logo for {{ position.company }} displayed next to the job title in a professional setting" class="company-logo" />
+                <div class="company-info">
+                  <a class="styled-link" href="{{ position.company_link }}"><h2 class="company-name">{{ position.company }}</h2></a>
+                  <h3 class="position-title">{{ position.title }}</h3>
                 </div>
-                <div class="position-card-body">
-                   
-
-                    <ul class="position-description">
-                        {% for line in position.description.splitlines %}
-                        <li>{{ line }}</li>
-                        {% endfor %}
-                    </ul>
-                    <div class="position-meta">
-                    <span class="position-dates">{{ position.start_date }} — {{ position.end_date }}</span>
-                    {% if position.location %}
-                        <span class="position-location">{{ position.location }}</span>
-                    {% endif %}
-                    </div>
+              </div>
+              <div class="position-card-body">
+                <ul class="position-description">
+                  {% for line in position.description.splitlines %}
+                    <li>{{ line }}</li>
+                  {% endfor %}
+                </ul>
+                <div class="position-meta">
+                  <span class="position-dates">{{ position.start_date }} — {{ position.end_date }}</span>
+                  {% if position.location %}
+                    <span class="position-location">{{ position.location }}</span>
+                  {% endif %}
                 </div>
-        </div>
+              </div>
+            </div>
+          </div>
         {% endif %}
-    {% endfor %}
-
-        
+      {% endfor %}
     </div>
 
     <div class="main-content">
-        <h3>Voluntary Experience</h3>
-        {% for position in positions %}
+      <h3>Voluntary Experience</h3>
+      {% for position in positions %}
         {% if position.isVoluntary is True %}
-        <div class="position-card">
-            <div class="position-card-header">
+          <div class="container p-0">
+            <div class="position-card">
+              <div class="position-card-header">
                 <img class="company-logo" src="{% static 'icons/'|add:position.company_logo.url %}" alt="Logo for {{ position.company }} displayed next to the job title in a professional setting" class="company-logo" />
                 <div class="company-info">
-                   <a class="styled-link" href="{{position.company_link}}"> <h2 class="company-name">{{ position.company }}</h2></a>
-                    <h3 class="position-title">{{ position.title }}</h3>
+                  <a class="styled-link" href="{{ position.company_link }}"><h2 class="company-name">{{ position.company }}</h2></a>
+                  <h3 class="position-title">{{ position.title }}</h3>
                 </div>
-            </div>
-            <div class="position-card-body">
-                
-                
+              </div>
+              <div class="position-card-body">
                 <ul class="position-description">
-                    {% for line in position.description.splitlines %}
+                  {% for line in position.description.splitlines %}
                     <li>{{ line }}</li>
-                    {% endfor %}
+                  {% endfor %}
                 </ul>
                 <div class="position-meta">
-                    <span class="position-dates">{{ position.start_date }} — {{ position.end_date }}</span>
-                    {% if position.location %}
+                  <span class="position-dates">{{ position.start_date }} — {{ position.end_date }}</span>
+                  {% if position.location %}
                     <span class="position-location">{{ position.location }}</span>
-                    {% endif %}
+                  {% endif %}
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
         {% endif %}
-    {% endfor %}
-
-        
+      {% endfor %}
     </div>
 
 {% endblock %}
