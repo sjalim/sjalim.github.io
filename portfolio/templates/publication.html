@@ -1,5 +1,112 @@
-{% extends "base.html" %} {% block title %} Publication {% endblock  %}
-{% block content %}
-<p>this is the publication</p>
+{% extends 'base.html' %} {% block title %}
+  Publication
+{% endblock %}
 
-{% endblock content %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/publication.css' %}" />
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    function toggleAbstract(index) {
+        const el = document.getElementById('abstract-' + index);
+        el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+{% endblock %}
+
+{% comment %}
+<div class="container">
+  <div>
+    <h2>Publication</h2>
+  </div>
+
+  {% for year in distinct_years %}
+    <h3 class="year-titile">{{ year }}</h3>
+    {% for item in publicationItems %}
+      <a href="{{ item.name_url }}">{{ item.name }}</a>
+
+      <span>Authors:</span><p>{{ item.authors }}</p>
+
+      {% if item.type == 'conference' %}
+        <span>Conference</span><p>{{ item.publication_name }}</p>
+      {% elif item.type == 'journal' %}
+        <span>Journal</span> <a href=" {{ item.publication_url }}"><p>{{ item.publication_name }}</p></a>
+      {% endif %}
+
+      <span>[<button class="abstract-btn" id="toggleBtn">Abstract</button>]</span>
+
+      <span>[<a href="{{ item.pdf_url }}">PDF</a>]</span>
+
+      <span>[ <a href="{{ item.code }}">Code/Database</a> ]</span>
+
+      <p id="toggleText" style="display: none;">This is the hidden text!</p>
+    {% endfor %}
+  {% endfor %}
+</div> {% endcomment %}
+
+{% block content %}
+  <div class="container">
+    <div class="main-content">
+      <div class="container-fluid">
+        <h2> <b>Publication</b></h2>
+
+        {% for year in distinct_years %}
+          <h3 class="year-title">{{ year }}</h3>
+
+          {% for item in publicationItems %}
+            <div class="publication-item">
+              <!-- Title -->
+               {%if year == item.year.year%}
+              🗞️ <a href="{{ item.name_url }}" class="pub-title">{{ item.name }}</a>
+              {% if item.core_rank %}
+                <span class="core-label">({{ item.core_rank }})</span>
+              {% endif %}
+
+              <!-- Authors -->
+              <div class="authors">
+                <b>{{ item.primary_author }}</b>{% if item.other_authors %}
+                  , {{ item.other_authors }}
+                {% endif %}
+              </div>
+
+              <!-- Journal or Conference -->
+              {% if item.type == 'conference' %}
+                <div>
+                  <b>Conference:</b> <span class="conference">{{ item.publication_name }}</span>
+                </div>
+              {% elif item.type == 'journal' %}
+                <div>
+                  <b>Journal:</b> <i>{{ item.publication_name }}</i>
+                  {% if item.publication_url %}
+                    (<a href="{{ item.publication_url }}">{{ item.venue_short }}</a>)
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              <!-- Links -->
+              <div class="links">
+                [<button type="button" class="abstract-btn" onclick="toggleAbstract('{{ forloop.counter0 }}')">Abstract</button>]
+                {% if item.pdf_url %}
+                  [<a href="{{ item.pdf_url }}">PDF</a>]
+                {% endif %}
+                {% if item.code %}
+                  [<a href="{{ item.code }}">Code & Dataset</a>]
+                {% endif %}
+
+              </div>
+
+              <!-- Abstract Text -->
+              <p id="abstract-{{ forloop.counter0 }}" class="abstract">{{ item.abstract|default:'No abstract available.' }}</p>
+            </div>
+            {%endif%}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
