@@ -111,3 +111,18 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+
+class Publication(models.Model):
+    name = models.CharField(max_length=500)
+    year = models.DateField()
+    name_url = models.URLField()
+    authors = models.CharField(max_length=100)
+    type = models.CharField(max_length=100)
+    publication_name = models.CharField(max_length=100)
+    publication_url = models.URLField()
+    pdf_url = models.URLField()
+    code = models.URLField()
+    abstract = models.CharField(max_length=1000, default= "")
+    

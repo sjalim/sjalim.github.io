@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import ProjectSection, TodoItem, EducationItem, AchievementItem, Section, Categories, Skills, JobExperienceItem, Project
+from .models import Publication, ProjectSection, TodoItem, EducationItem, AchievementItem, Section, Categories, Skills, JobExperienceItem, Project
 # Create your views here.
 import logging
 import json
@@ -52,35 +52,6 @@ def achievement(request):
 def job_experience(request):
 
     positions = JobExperienceItem.objects.all()
-
-    # print(positions)
-    
-
-    # positions = [   
-    #     {
-    #         'title': 'Software Engineer',
-    #         'company': 'Tech Company',
-    #         'company_link': 'https://www.techcompany.com',
-    #         'department': 'Engineering',
-    #         'duration': 'Jan 2020 - Present',
-    #         'description': 'Developed and maintained web applications using Django and React.'
-    #     },
-    #     {
-    #         'title': 'Data Analyst',
-    #         'company': 'Data Company',
-    #         'location': 'City, Country',
-    #         'duration': 'Jan 2019 - Dec 2019',
-    #         'description': 'Analyzed data using Python and SQL to provide insights for business decisions.'
-    #     },
-    #     {
-    #         'title': 'Intern',
-    #         'company': 'Internship Company',
-    #         'location': 'City, Country',
-    #         'duration': 'Jun 2018 - Aug 2018',
-    #         'description': 'Assisted in software development projects and learned about Agile methodologies.'
-    #     }
-
-    # ]
     return render(request, "job_experience.html", {'positions': positions})
 
 def project(request):
@@ -98,74 +69,30 @@ def project(request):
             })
 
     return render(request, "project.html", {'projectItems': grouped_projects})
-  
- 
-  
-    # projectItems = [
-    #     {
-    #         "section": "Data Science",
-    #         "projects": [
-    #             {
-    #                 "name": "check",
-    #                 "image": "saruar.jpg",
-    #                 "description": "check check check check check check check check",
-    #                 "tags": [
-    #                     "Swift", "SwiftUI", "iOS Deveploment"
-    #                 ],
-    #                 "link": "https://placehold.co/600x400"
-    #             },
-               
-    #         ]
-    #     },
-    #     {
-    #         "section": "App Development",
-    #         "projects": [
-    #             {
-    #                 "name": "check",
-    #                 "image": "saruar.jpg",
-    #                 "description": "check check",
-    #                 "tags": [
-    #                     "Swift", "SwiftUI", "iOS Deveploment"
-    #                 ],
-    #                 "link": "https://github.com/sjalim/CricInfo"
-    #             },
-    #             {
-    #                 "name": "check",
-    #                 "image": "saruar.jpg",                    
-    #                 "description": "check check",
-    #                 "tags": [
-    #                     "Swift", "SwiftUI", "iOS Deveploment"
-    #                 ],
-    #                 "link": "https://github.com/sjalim/CricInfo"
-    #             },
-    #              {
-    #                 "name": "check",
-    #                 "image": "saruar.jpg",
-    #                 "description":  "check check",
-    #                 "tags": [
-    #                     "Swift", "SwiftUI", "iOS Deveploment"
-    #                 ],
-    #                 "link": "https://github.com/sjalim/CricInfo"
-    #             },              
-    #                   {
-    #                 "name": "check",
-    #                 "image": "saruar.jpg",
-    #                 "description": "check check",
-    #                 "tags": [
-    #                     "Swift", "SwiftUI", "iOS Deveploment"
-    #                 ],
-    #                 "link": "https://github.com/sjalim/CricInfo"
-    #             },  
-    #         ]
-    #     }
-    # ]
 
 
 def research(request):
     return render(request, "research.html")
 
 def publication(request):
-    return render(request, "publication.html")
+
+        
+    publicationItems = Publication.objects.all().order_by('-year')
+
+        # Get distinct years (as datetime.date objects), sorted descending
+    years = Publication.objects.order_by('-year').values_list('year', flat=True).distinct()
+
+        # If you want years as strings (e.g., just the year part):
+    distinct_years = sorted({item.year.year for item in publicationItems}, reverse=True)
+
+    return render (
+            request,
+            "publication.html",
+            {
+                'publicationItems': publicationItems,
+                'distinct_years': distinct_years,
+            }
+    )
 
 def resume(request):
     return render(request, "resume.html")
@@ -203,6 +130,5 @@ def todos(request):
         },
     ]
     return render(request, "todos.html", {'sections': sections})
-
 
 

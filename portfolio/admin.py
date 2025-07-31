@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import TodoItem 
-from .models import ProjectSection, Project, HomeSidebarInfo, EducationItem, JobExperienceItem, AchievementItem, Section, Categories, Skills
+from .models import Publication, ProjectSection, Project, HomeSidebarInfo, EducationItem, JobExperienceItem, AchievementItem, Section, Categories, Skills
 # Register your models here.
 
 admin.site.register(TodoItem)
@@ -18,3 +18,4 @@ admin.site.register(Categories)
 admin.site.register(Skills)
 admin.site.register(Project)
 admin.site.register(ProjectSection)
+admin.site.register(Publication)

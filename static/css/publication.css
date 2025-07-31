@@ -1,0 +1,56 @@
+.abstract-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    display: inline;
+}
+
+.abstract-btn:hover {
+    text-decoration: underline;
+
+}
+
+
+.year-title {
+    font-size: 1.2em;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: #f1efec;
+    color: #030303;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.publication-item {
+    margin-bottom: 20px;
+    
+}
+.pub-title {
+    font-weight: bold;
+    color: 52adc8;
+    text-decoration: none;
+}
+.core-label {
+    color: 52adc8;
+    font-weight: bold;
+}
+.authors b {
+    color: green;
+}
+.journal a, .conference {
+    color: #52adc8;
+    text-decoration: none;
+}
+.links a {
+    color: 52adc8;
+   
+    text-decoration: none;
+}
+.abstract {
+    margin-top: 5px;
+    display: none;
+}
