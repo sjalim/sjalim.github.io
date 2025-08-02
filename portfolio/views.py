@@ -33,12 +33,13 @@ def skill(request):
             }
 
             for skill in category.skills.all():
-                skill_dict = {
-                    'name': skill.name,
-                    'icon': skill.icon.url if skill.icon else None,
-                    'active': skill.active
-                }
-                category_dict['skills'].append(skill_dict)
+                if skill.active == True:
+                    skill_dict = {
+                        'name': skill.name,
+                        'icon': skill.icon.url if skill.icon else None,
+                        'active': skill.active
+                    }
+                    category_dict['skills'].append(skill_dict)
 
             section_dict['categories'].append(category_dict)
 
