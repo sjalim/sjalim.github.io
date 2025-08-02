@@ -108,7 +108,7 @@ class Project(models.Model):
     description = models.TextField()
     link = models.URLField()
     tags = models.JSONField(default=list)  # or use a ManyToManyField to a Tag model
-
+    youtube = models.URLField()
     def __str__(self):
         return self.name
     
