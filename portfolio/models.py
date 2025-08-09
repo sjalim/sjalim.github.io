@@ -79,7 +79,7 @@ class Categories(models.Model):
         return f"{self.name} ({self.section.name})"
 
 
-class Skills(models.Model):
+class Skill(models.Model):
     category = models.ForeignKey(Categories, related_name='skills', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     icon = models.ImageField(upload_to='skills_icons/')

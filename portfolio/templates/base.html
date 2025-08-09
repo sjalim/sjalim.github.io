@@ -88,14 +88,14 @@
                   <img src="{% static 'icons/researchgate_icon.png' %}" alt="" class="follow-icon" style="margin-right: 5px;" />
                   <a href="{{ sideBarItem.researchGateLink }}" target="_blank">Reasearch Gate</a>
                 </div>
-                <div class="link-item">
+                {% comment %} <div class="link-item">
                   <i class="fa fa-id-card"></i>
                   <a href="{{ sideBarItem.orcidLink }}" target="_blank">ORCID</a>
-                </div>
-                <div class="link-item twitter-item">
+                </div> {% endcomment %}
+                {% comment %} <div class="link-item twitter-item">
                   <i class="fa fa-twitter"></i>
                   <a href="{{ sideBarItem.twitterLink }}" target="_blank">Twitter</a>
-                </div>
+                </div> {% endcomment %}
                 <div class="link-item">
                   <i class="fa fa-linkedin"></i>
                   <a href="{{ sideBarItem.linkedInLink }}" target="_blank">LinkedIn</a>

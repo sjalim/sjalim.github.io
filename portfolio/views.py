@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import Publication, ProjectSection, TodoItem, EducationItem, AchievementItem, Section, Categories, Skills, JobExperienceItem, Project
+from .models import Publication, ProjectSection, TodoItem, EducationItem, AchievementItem, Section, Categories, Skill, JobExperienceItem, Project
 # Create your views here.
 import logging
 import json

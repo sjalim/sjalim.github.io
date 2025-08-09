@@ -6,21 +6,23 @@
 .achievement-icon {
     height: 20px;
     width: 20px;
-       flex-shrink: 0;
+ 
 
 }
 .achievement-title{
 
-    display: inline-block;
+    display: block;
     font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
     margin: 0;
     padding: 0;
      word-break: break-word;
 }
 
 .achievement-row {
-    display: flex;
+    display: inline;
     align-items: center;
     gap: 10px; /* space between image and text */
     flex-wrap: wrap;
+    flex-direction: row;
 }

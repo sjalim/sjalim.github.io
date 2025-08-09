@@ -40,14 +40,14 @@
         <br>
         {% endfor %}
     </div>
-    <div class="main-content">
+    <div class="main-content"> 
         <h3>Certification</h3>
         {%for item in achievementItems%}
         
            <div class="achievement-row">
-                   <i><img class="achievement-icon" src="{% static 'Assests/achievement_icon.jpg' %}" alt="icon"></i> 
+                   {% comment %} <i><img class="achievement-icon" src="{% static 'Assests/achievement_icon.jpg' %}" alt="icon"></i>  {% endcomment %}
                 <p class="achievement-title"> <a class="styled-link"  href="{{item.acheivementLink}}"> 
-              {{item.title}}  </a> </p>
+              🏆 {{item.title}}  </a> </p>
           </div>
 
         {%endfor%}
