@@ -68,9 +68,9 @@
 
 /* styles.css */
 .project-link-btn {
+  
     text-align: right;
-     height: 20%;
-
+   align-self: flex-end;
 }
 
 .github-button {
@@ -81,7 +81,6 @@
     width: 40px;
     height: 40px;
     background-color: #24292e;
-
     border-radius: 50%;
     text-decoration: none;
  
@@ -111,4 +110,12 @@
     text-decoration: none;
  
     transition: background 0.3s;
+}
+
+.icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  vertical-align:bottom;
+  margin-right: 8px;
 }
