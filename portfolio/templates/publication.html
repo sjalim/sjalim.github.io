@@ -13,7 +13,7 @@
 <script>
     function toggleAbstract(index) {
         const el = document.getElementById('abstract-' + index);
-        el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
     }
 </script>
 
@@ -88,7 +88,6 @@
                 </div>
               {% endif %}
 
-              <!-- Links -->
               <div class="links">
                 [<button type="button" class="abstract-btn" onclick="toggleAbstract('{{ forloop.counter0 }}')">Abstract</button>]
                 {% if item.pdf_url %}
@@ -97,12 +96,11 @@
                 {% if item.code %}
                   [<a href="{{ item.code }}">Code & Dataset</a>]
                 {% endif %}
-
               </div>
-
-              <!-- Abstract Text -->
-              <p id="abstract-{{ forloop.counter0 }}" class="abstract">{{ item.abstract|default:'No abstract available.' }}</p>
-            </div>
+              <p id="abstract-{{ forloop.counter0 }}" class="abstract" style="display: none;">
+                {{ item.abstract|default:'No abstract available.' }}
+              </p>
+        </div>
             {%endif%}
           {% endfor %}
         {% endfor %}

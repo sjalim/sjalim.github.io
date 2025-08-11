@@ -59,7 +59,7 @@ def project(request):
 
     grouped_projects = []
 
-    sections = ProjectSection.objects.filter(active=True)
+    sections = ProjectSection.objects.filter(active=True).order_by('serial')
 
     for section in sections:
         projects = Project.objects.filter(section=section)
